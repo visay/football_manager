@@ -60,9 +60,11 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	/**
 	 * action list
 	 *
+	 * @param string $message
+	 * @param string $messageType
 	 * @return void
 	 */
-	public function listAction() {
+	public function listAction($message = '', $messageType = '') {
 		$match = $this->matchRepository->getNextMatch();
 		$this->view->assign('match', $match);
 		if (is_object($match)) {
@@ -83,7 +85,66 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 			$this->view->assign('declined', $declined);
 			$this->view->assign('pending', count($players) - count($playerResponses));
 			$this->view->assign('players', $players);
+			$this->view->assign('message', $message);
+			$this->view->assign('messageType', $messageType);
 		}
+	}
+
+	/**
+	 * action filter
+	 *
+	 * @param \Visay\FootballManager\Domain\Model\Player $player
+	 * @param string $message
+	 * @param string $messageType
+	 * @return void
+	 */
+	public function filterAction(\Visay\FootballManager\Domain\Model\Player $player = NULL, $message = '', $messageType = '') {
+		if (! $player) $this->redirect('list');
+
+		$match = $this->matchRepository->getNextMatch();
+		$this->view->assign('match', $match);
+		if (is_object($match)) {
+			$playerResponses = $this->playerResponseRepository->findByMatch($match);
+			$players = $this->playerRepository->findAll();
+
+			$confirmed = 0;
+			$declined = 0;
+			foreach ($playerResponses as $playerResponse) {
+				if ($playerResponse->getResponse()) {
+					$confirmed = $confirmed + 1;
+				} else {
+					$declined = $declined + 1;
+				}
+			}
+
+			$this->view->assign('confirmed', $confirmed);
+			$this->view->assign('declined', $declined);
+			$this->view->assign('pending', count($players) - count($playerResponses));
+			$this->view->assign('players', $players);
+			$this->view->assign('activePlayer', $player);
+			$this->view->assign('message', $message);
+			$this->view->assign('messageType', $messageType);
+		}
+	}
+
+	/**
+	 * action confirm
+	 *
+	 * @param \Visay\FootballManager\Domain\Model\Match $match
+	 * @param \Visay\FootballManager\Domain\Model\Player $player
+	 * @return void
+	 */
+	public function confirmAction(\Visay\FootballManager\Domain\Model\Match $match, \Visay\FootballManager\Domain\Model\Player $player) {
+		$code = $this->request->getArgument('code');
+		if (! empty($code)) {
+			$this->redirect('list', NULL, NULL, array('message' => 'Response recorded!', 'messageType' => 'success'));
+		} else {
+			$this->redirect('filter', NULL, NULL, array('player' => $player, 'message' => 'Invalid code!', 'messageType' => 'error'));
+		}
+	}
+
+	public function declineAction() {
+
 	}
 
 }

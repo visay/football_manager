@@ -8,10 +8,11 @@ if (! defined('TYPO3_MODE')) {
 	'Visay.' . $_EXTKEY,
 	'FootballSchedule',
 	array(
-		'Match' => 'list',
+		'Match' => 'list, filter, confirm, decline',
 	),
 	// non-cacheable actions
 	array(
+		'Match' => 'filter, confirm, decline',
 	)
 );
 

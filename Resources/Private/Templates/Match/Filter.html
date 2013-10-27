@@ -16,16 +16,40 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr><td colspan="3">
-						<f:form action="filter" id="player-filter">
-							<f:form.select name="player" options="{players}" optionValueField="uid" optionLabelField="nickname" prependOptionValue="0" prependOptionLabel="--- Select your name ---" id="player-selected" />
-						</f:form>
-					</td></tr>
+					<tr>
+						<td>
+							<f:form action="filter" id="player-filter">
+								<f:form.select name="player" options="{players}" optionValueField="uid" optionLabelField="nickname" value="{activePlayer}" id="player-selected" />
+							</f:form>
+						</td>
+						<td>
+							<a href="#confirm-form" role="button" class="btn btn-success btn-block" data-toggle="modal">YES <i class="icon-thumbs-up"></i></a>
+
+							<div id="confirm-form" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="confirm-form-label" aria-hidden="true">
+								<f:form action="confirm" arguments="{match: match, player: activePlayer}">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+										<h3 id="confirm-form-label">Enter your code</h3>
+									</div>
+									<div class="modal-body">
+											<f:form.textfield name="code" />
+									</div>
+									<div class="modal-footer">
+										<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+										<f:form.submit class="btn btn-primary" value="Confirm" />
+									</div>
+								</f:form>
+							</div>
+						</td>
+						<td>
+							<a href="#decline-form" role="button" class="btn btn-danger btn-block" data-toggle="modal">NO <i class="icon-thumbs-down"></i></a>
+						</td>
+					</tr>
 					<f:if condition="{message}">
 						<tr>
 							<td colspan="3">
 								<div class="alert alert-{messageType}">
-									<strong>Thanks:</strong> {message}
+									<strong>Error:</strong> {message}
 								</div>
 							</td>
 						</tr>
