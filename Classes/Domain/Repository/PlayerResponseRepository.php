@@ -36,11 +36,29 @@ class PlayerResponseRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 	 * Find player response by match
 	 *
 	 * @param \Visay\FootballManager\Domain\Model\Match $match
-	 * @return Tx_Extbase_Persistence_QueryInterface
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
 	 */
 	public function findByMatch(\Visay\FootballManager\Domain\Model\Match $match) {
 		$query = $this->createQuery();
 		return $query->matching($query->equals('play', $match))->execute();
+	}
+
+	/**
+	 * Find player response by match and player
+	 *
+	 * @param \Visay\FootballManager\Domain\Model\Match $match
+	 * @param \Visay\FootballManager\Domain\Model\Player $player
+	 * @return \Visay\FootballManager\Domain\Model\PlayerResponse
+	 */
+	public function findByMatchAndPlayer(\Visay\FootballManager\Domain\Model\Match $match, \Visay\FootballManager\Domain\Model\Player $player) {
+		$query = $this->createQuery();
+		return $query->matching(
+				$query->logicalAnd(
+					$query->equals('play', $match),
+					$query->equals('player', $player)
+				)
+			)->execute()
+			->getFirst();
 	}
 }
 ?>

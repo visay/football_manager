@@ -9,8 +9,6 @@ if (!defined('TYPO3_MODE')) {
 	'Football Schedule'
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Football Manager');
-
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_footballmanager_domain_model_player', 'EXT:football_manager/Resources/Private/Language/locallang_csh_tx_footballmanager_domain_model_player.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_footballmanager_domain_model_player');
 $TCA['tx_footballmanager_domain_model_player'] = array(

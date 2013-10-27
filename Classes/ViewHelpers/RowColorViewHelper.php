@@ -1,5 +1,5 @@
 <?php
-namespace Visay\FootballManager\Domain\Repository;
+namespace Visay\FootballManager\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
@@ -26,28 +26,39 @@ namespace Visay\FootballManager\Domain\Repository;
  ***************************************************************/
 
 /**
- *
- *
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
+ * ViewHelper to render open tr tags
  */
-class MatchRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class RowColorViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
 
 	/**
-	 * Find upcoming match
+	 * Player Repository
 	 *
-	 * @return \Visay\FootballManager\Domain\Model\Match
+	 * @var \Visay\FootballManager\Domain\Repository\PlayerResponseRepository
+	 * @inject
 	 */
-	public function getNextMatch() {
-		$query = $this->createQuery();
-		$now = new \DateTime();
-		return $query->matching(
-				$query->greaterThanOrEqual('date', $now)
-			)
-			->setOrderings(array('date' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING))
-			->execute()
-			->getFirst();
-	}
+	protected $playerResponseRepository;
 
+	/**
+	 * Renders a tr tag
+	 *
+	 * @param \Visay\FootballManager\Domain\Model\Match $match
+	 * @param \Visay\FootballManager\Domain\Model\Player $player
+	 * @return void
+	 */
+	public function render(\Visay\FootballManager\Domain\Model\Match $match, \Visay\FootballManager\Domain\Model\Player $player) {
+		$output = '<tr>';
+
+		$response = $this->playerResponseRepository->findByMatchAndPlayer($match, $player);
+		if (is_object($response)) {
+			if ($response->getResponse()) {
+				$output = '<tr class="success">';
+			} else {
+				$output = '<tr class="error">';
+			}
+		}
+
+		return $output;
+	}
 }
+
 ?>

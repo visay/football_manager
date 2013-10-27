@@ -1,24 +1,33 @@
+{namespace fm=Visay\FootballManager\ViewHelpers}
+
 <f:layout name="Default" />
 
 <f:section name="main">
 	<f:if condition="{match}">
 		<f:then>
-			<h3><f:translate key="tx_footballmanager_domain_model_match.date" /> {match.date -> f:format.date()}</h3>
-			<h3><f:translate key="tx_footballmanager_domain_model_match.location" /> {match.location.name}</h3>
+			<h4><f:translate key="tx_footballmanager_domain_model_match.date" /> {match.date -> f:format.date()}</h4>
+			<h4><f:translate key="tx_footballmanager_domain_model_match.location" /> {match.location.name}</h4>
 			<table class="table">
 				<thead>
 					<tr>
 						<th class="label label-success"><f:translate key="tx_footballmanager_domain_model_match.confirm" /> {confirmed}</th>
-						<th class="label label-error"><f:translate key="tx_footballmanager_domain_model_match.decline" /> {declined}</th>
-						<th class="label label-info"><f:translate key="tx_footballmanager_domain_model_match.pending" /> {pending}</th>
+						<th class="label label-important"><f:translate key="tx_footballmanager_domain_model_match.decline" /> {declined}</th>
+						<th class="label label-inverse"><f:translate key="tx_footballmanager_domain_model_match.pending" /> {pending}</th>
 					</tr>
 				</thead>
 				<tbody>
 					<f:for each="{players}" as="player">
-						<tr>
-							<td><f:image width="50" src="uploads/tx_footballmanager/{player.photo}" alt="{player.nickname}" /></td>
+						<fm:rowColor match="{match}" player="{player}" />
+							<f:if condition="{player.photo}">
+								<f:then>
+									<td><f:image class="img-circle" width="50c" height="50c" src="uploads/tx_footballmanager/{player.photo}" alt="{player.nickname}" /></td>
+								</f:then>
+								<f:else>
+									<td><f:image class="img-circle" width="50c" height="50c" src="EXT:football_manager/Resources/Public/Images/dummy.jpg" alt="{player.nickname}" /></td>
+								</f:else>
+							</f:if>
 							<td>{player.nickname}</td>
-							<td><i class="icon-ok"></i>  <i class="icon-remove"></i></td>
+							<td><fm:iconType match="{match}" player="{player}" /></td>
 						</tr>
 					</f:for>
 				</tbody>

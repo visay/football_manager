@@ -106,7 +106,7 @@ $TCA['tx_footballmanager_domain_model_player'] = array(
 				'uploadfolder' => 'uploads/tx_footballmanager',
 				'show_thumbs' => 1,
 				'size' => 1,
-				'max' => 1,
+				'maxitems' => 1,
 				'allowed' => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
 				'disallowed' => '',
 			),
