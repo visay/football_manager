@@ -1,0 +1,31 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+	<f:if condition="{match}">
+		<f:then>
+			<h3><f:translate key="tx_footballmanager_domain_model_match.date" /> {match.date -> f:format.date()}</h3>
+			<h3><f:translate key="tx_footballmanager_domain_model_match.location" /> {match.location.name}</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="label label-success"><f:translate key="tx_footballmanager_domain_model_match.confirm" /> {confirmed}</th>
+						<th class="label label-error"><f:translate key="tx_footballmanager_domain_model_match.decline" /> {declined}</th>
+						<th class="label label-info"><f:translate key="tx_footballmanager_domain_model_match.pending" /> {pending}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<f:for each="{players}" as="player">
+						<tr>
+							<td><f:image width="50" src="uploads/tx_footballmanager/{player.photo}" alt="{player.nickname}" /></td>
+							<td>{player.nickname}</td>
+							<td><i class="icon-ok"></i>  <i class="icon-remove"></i></td>
+						</tr>
+					</f:for>
+				</tbody>
+			</table>
+		</f:then>
+		<f:else>
+			<f:translate key="tx_footballmanager_domain_model_match.empty" />
+		</f:else>
+	</f:if>
+</f:section>

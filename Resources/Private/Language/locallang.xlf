@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-10-26T21:46:01Z" product-name="football_manager">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_footballmanager_domain_model_player">
+				<source>The football player</source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_player.photo">
+				<source>The player's photo</source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_player.nickname">
+				<source>The player's nickname</source>
+			</trans-unit>
+
+			<trans-unit id="tx_footballmanager_domain_model_match">
+				<source>The match for the football team</source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_match.date">
+				<source>Date:</source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_match.location">
+				<source>Location:</source>
+			</trans-unit>
+
+			<trans-unit id="tx_footballmanager_domain_model_match.confirm">
+				<source>Confirmed: </source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_match.decline">
+				<source>Decline: </source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_match.pending">
+				<source>Pending: </source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_match.empty">
+				<source>There is no upcoming match available!</source>
+			</trans-unit>
+
+			<trans-unit id="tx_footballmanager_domain_model_playerresponse">
+				<source>The response from the player for a match</source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_playerresponse.response">
+				<source>The response yes/no from the player</source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_playerresponse.player">
+				<source>The player who response to this match</source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_playerresponse.play">
+				<source>The match that this response is for</source>
+			</trans-unit>
+
+			<trans-unit id="tx_footballmanager_domain_model_location">
+				<source>The location of the match</source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_location.name">
+				<source>The name of the location</source>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

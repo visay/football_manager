@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-10-26T21:46:01Z" product-name="football_manager">
+		<header/>
+		<body>
+
+			<trans-unit id="date.description">
+				<source>The date of the match</source>
+			</trans-unit>
+			<trans-unit id="location.description">
+				<source>location</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
