@@ -7,10 +7,10 @@ if (! defined ('TYPO3_MODE')) {
 $TCA['tx_footballmanager_domain_model_player'] = array(
 	'ctrl' => $TCA['tx_footballmanager_domain_model_player']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, photo, nickname',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, photo, nickname, code',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, photo, nickname,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, photo, nickname, code,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -114,6 +114,15 @@ $TCA['tx_footballmanager_domain_model_player'] = array(
 		'nickname' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:football_manager/Resources/Private/Language/locallang_db.xlf:tx_footballmanager_domain_model_player.nickname',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim,required'
+			),
+		),
+		'code' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:football_manager/Resources/Private/Language/locallang_db.xlf:tx_footballmanager_domain_model_player.code',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,

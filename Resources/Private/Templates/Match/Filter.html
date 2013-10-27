@@ -23,7 +23,14 @@
 							</f:form>
 						</td>
 						<td>
-							<a href="#confirm-form" role="button" class="btn btn-success btn-block" data-toggle="modal">YES <i class="icon-thumbs-up"></i></a>
+							<f:if condition="{confirmedResponse}">
+								<f:then>
+									<a href="#" role="button" class="btn btn-success btn-block disabled" data-toggle="modal">YES <i class="icon-thumbs-up"></i></a>
+								</f:then>
+								<f:else>
+									<a href="#confirm-form" role="button" class="btn btn-success btn-block" data-toggle="modal">YES <i class="icon-thumbs-up"></i></a>
+								</f:else>
+							</f:if>
 
 							<div id="confirm-form" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="confirm-form-label" aria-hidden="true">
 								<f:form action="confirm" arguments="{match: match, player: activePlayer}">
@@ -42,7 +49,30 @@
 							</div>
 						</td>
 						<td>
-							<a href="#decline-form" role="button" class="btn btn-danger btn-block" data-toggle="modal">NO <i class="icon-thumbs-down"></i></a>
+							<f:if condition="{declinedResponse}">
+								<f:then>
+									<a href="#" role="button" class="btn btn-danger btn-block disabled" data-toggle="modal">NO <i class="icon-thumbs-down"></i></a>
+								</f:then>
+								<f:else>
+									<a href="#decline-form" role="button" class="btn btn-danger btn-block" data-toggle="modal">NO <i class="icon-thumbs-down"></i></a>
+								</f:else>
+							</f:if>
+
+							<div id="decline-form" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="decline-form-label" aria-hidden="true">
+								<f:form action="decline" arguments="{match: match, player: activePlayer}">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+										<h3 id="decline-form-label">Enter your code</h3>
+									</div>
+									<div class="modal-body">
+											<f:form.textfield name="code" />
+									</div>
+									<div class="modal-footer">
+										<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+										<f:form.submit class="btn btn-primary" value="Confirm" />
+									</div>
+								</f:form>
+							</div>
 						</td>
 					</tr>
 					<f:if condition="{message}">

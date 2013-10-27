@@ -10,6 +10,9 @@
 			<trans-unit id="nickname.description">
 				<source>The player's nickname</source>
 			</trans-unit>
+			<trans-unit id="code.description">
+				<source>The player's code</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

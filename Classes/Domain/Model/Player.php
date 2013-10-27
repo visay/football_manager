@@ -49,6 +49,14 @@ class Player extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $nickname;
 
 	/**
+	 * The player's code
+	 *
+	 * @var \string
+	 * @validate NotEmpty
+	 */
+	protected $code;
+
+	/**
 	 * Returns the photo
 	 *
 	 * @return \string $photo
@@ -84,6 +92,25 @@ class Player extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setNickname($nickname) {
 		$this->nickname = $nickname;
+	}
+
+	/**
+	 * Returns the code
+	 *
+	 * @return \string $code
+	 */
+	public function getCode() {
+		return $this->code;
+	}
+
+	/**
+	 * Sets the code
+	 *
+	 * @param \string $code
+	 * @return void
+	 */
+	public function setCode($code) {
+		$this->code = $code;
 	}
 
 }

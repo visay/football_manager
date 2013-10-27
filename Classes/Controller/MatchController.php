@@ -1,6 +1,8 @@
 <?php
 namespace Visay\FootballManager\Controller;
 
+use Visay\FootballManager\Domain\Model;
+use TYPO3\CMS\Core\Tests\Unit\Cache;
 /***************************************************************
  *  Copyright notice
  *
@@ -60,8 +62,8 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	/**
 	 * action list
 	 *
-	 * @param string $message
-	 * @param string $messageType
+	 * @param \string $message
+	 * @param \string $messageType
 	 * @return void
 	 */
 	public function listAction($message = '', $messageType = '') {
@@ -94,8 +96,8 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	 * action filter
 	 *
 	 * @param \Visay\FootballManager\Domain\Model\Player $player
-	 * @param string $message
-	 * @param string $messageType
+	 * @param \string $message
+	 * @param \string $messageType
 	 * @return void
 	 */
 	public function filterAction(\Visay\FootballManager\Domain\Model\Player $player = NULL, $message = '', $messageType = '') {
@@ -124,6 +126,17 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 			$this->view->assign('activePlayer', $player);
 			$this->view->assign('message', $message);
 			$this->view->assign('messageType', $messageType);
+
+			$activePlayerResponse = $this->playerResponseRepository->findByMatchAndPlayer($match, $player);
+			if ($activePlayerResponse) {
+				if ($activePlayerResponse->getResponse()) {
+					$this->view->assign('confirmedResponse', TRUE);
+					$this->view->assign('declinedResponse', FALSE);
+				} else {
+					$this->view->assign('confirmedResponse', FALSE);
+					$this->view->assign('declinedResponse', TRUE);
+				}
+			}
 		}
 	}
 
@@ -136,15 +149,49 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	 */
 	public function confirmAction(\Visay\FootballManager\Domain\Model\Match $match, \Visay\FootballManager\Domain\Model\Player $player) {
 		$code = $this->request->getArgument('code');
-		if (! empty($code)) {
+		if (! empty($code) && ($code == $player->getCode())) {
+			$playerResponse = $this->playerResponseRepository->findByMatchAndPlayer($match, $player);
+			if ($playerResponse) {
+				$playerResponse->setResponse(TRUE);
+				$this->playerResponseRepository->update($playerResponse);
+			} else {
+				$playerResponse = new \Visay\FootballManager\Domain\Model\PlayerResponse();
+				$playerResponse->setResponse(TRUE);
+				$playerResponse->setPlay($match);
+				$playerResponse->setPlayer($player);
+				$this->playerResponseRepository->add($playerResponse);
+			}
 			$this->redirect('list', NULL, NULL, array('message' => 'Response recorded!', 'messageType' => 'success'));
 		} else {
 			$this->redirect('filter', NULL, NULL, array('player' => $player, 'message' => 'Invalid code!', 'messageType' => 'error'));
 		}
 	}
 
-	public function declineAction() {
-
+	/**
+	 * action decline
+	 *
+	 * @param \Visay\FootballManager\Domain\Model\Match $match
+	 * @param \Visay\FootballManager\Domain\Model\Player $player
+	 * @return void
+	 */
+	public function declineAction(\Visay\FootballManager\Domain\Model\Match $match, \Visay\FootballManager\Domain\Model\Player $player) {
+		$code = $this->request->getArgument('code');
+		if (! empty($code) && ($code == $player->getCode())) {
+			$playerResponse = $this->playerResponseRepository->findByMatchAndPlayer($match, $player);
+			if ($playerResponse) {
+				$playerResponse->setResponse(FALSE);
+				$this->playerResponseRepository->update($playerResponse);
+			} else {
+				$playerResponse = new \Visay\FootballManager\Domain\Model\PlayerResponse();
+				$playerResponse->setResponse(FALSE);
+				$playerResponse->setPlay($match);
+				$playerResponse->setPlayer($player);
+				$this->playerResponseRepository->add($playerResponse);
+			}
+			$this->redirect('list', NULL, NULL, array('message' => 'Response recorded!', 'messageType' => 'success'));
+		} else {
+			$this->redirect('filter', NULL, NULL, array('player' => $player, 'message' => 'Invalid code!', 'messageType' => 'error'));
+		}
 	}
 
 }

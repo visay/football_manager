@@ -13,6 +13,9 @@
 			<trans-unit id="tx_footballmanager_domain_model_player.nickname">
 				<source>Nickname</source>
 			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_player.code">
+				<source>Code</source>
+			</trans-unit>
 
 			<trans-unit id="tx_footballmanager_domain_model_match">
 				<source>Match</source>
