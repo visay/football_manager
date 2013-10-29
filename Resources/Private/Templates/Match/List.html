@@ -5,7 +5,7 @@
 <f:section name="main">
 	<f:if condition="{match}">
 		<f:then>
-			<h4><f:translate key="tx_footballmanager_domain_model_match.date" /> {match.date -> f:format.date()}</h4>
+			<h4><f:translate key="tx_footballmanager_domain_model_match.date" /> <f:format.date format="d.m.Y - H:i">{match.date}</f:format.date></h4>
 			<h4><f:translate key="tx_footballmanager_domain_model_match.location" /> {match.location.name}</h4>
 			<table class="table">
 				<thead>
