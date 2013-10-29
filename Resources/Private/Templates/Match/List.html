@@ -18,7 +18,7 @@
 				<tbody>
 					<tr><td colspan="3">
 						<f:form action="filter" id="player-filter">
-							<f:form.select name="player" options="{players}" optionValueField="uid" optionLabelField="nickname" prependOptionValue="0" prependOptionLabel="--- Select your name ---" id="player-selected" />
+							<f:form.select name="player" options="{players}" optionValueField="uid" optionLabelField="nickname" prependOptionValue="0" prependOptionLabel="<f:translate key='tx_footballmanager_domain_model_match.select' />" id="player-selected" />
 						</f:form>
 					</td></tr>
 					<f:if condition="{message}">

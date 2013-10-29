@@ -39,6 +39,9 @@
 			<trans-unit id="tx_footballmanager_domain_model_match.empty">
 				<source>There is no upcoming match available!</source>
 			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_match.select">
+				<source>--- Will you join? ---</source>
+			</trans-unit>
 
 			<trans-unit id="tx_footballmanager_domain_model_playerresponse">
 				<source>The response from the player for a match</source>
