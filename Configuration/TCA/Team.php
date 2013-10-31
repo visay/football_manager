@@ -4,13 +4,13 @@ if (! defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$TCA['tx_footballmanager_domain_model_match'] = array(
-	'ctrl' => $TCA['tx_footballmanager_domain_model_match']['ctrl'],
+$TCA['tx_footballmanager_domain_model_team'] = array(
+	'ctrl' => $TCA['tx_footballmanager_domain_model_team']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, date, location, team',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, date, location, team,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -39,8 +39,8 @@ $TCA['tx_footballmanager_domain_model_match'] = array(
 				'items' => array(
 					array('', 0),
 				),
-				'foreign_table' => 'tx_footballmanager_domain_model_match',
-				'foreign_table_where' => 'AND tx_footballmanager_domain_model_match.pid=###CURRENT_PID### AND tx_footballmanager_domain_model_match.sys_language_uid IN (-1,0)',
+				'foreign_table' => 'tx_footballmanager_domain_model_team',
+				'foreign_table_where' => 'AND tx_footballmanager_domain_model_team.pid=###CURRENT_PID### AND tx_footballmanager_domain_model_team.sys_language_uid IN (-1,0)',
 			),
 		),
 		'l10n_diffsource' => array(
@@ -97,35 +97,13 @@ $TCA['tx_footballmanager_domain_model_match'] = array(
 				),
 			),
 		),
-		'date' => array(
+		'name' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:football_manager/Resources/Private/Language/locallang_db.xlf:tx_footballmanager_domain_model_match.date',
+			'label' => 'LLL:EXT:football_manager/Resources/Private/Language/locallang_db.xlf:tx_footballmanager_domain_model_team.name',
 			'config' => array(
 				'type' => 'input',
-				'size' => 10,
-				'eval' => 'datetime,required',
-				'checkbox' => 1,
-				'default' => time()
-			),
-		),
-		'location' => array(
-			'exclude' => 0,
-			'label' => 'LLL:EXT:football_manager/Resources/Private/Language/locallang_db.xlf:tx_footballmanager_domain_model_match.location',
-			'config' => array(
-				'type' => 'select',
-				'foreign_table' => 'tx_footballmanager_domain_model_location',
-				'minitems' => 0,
-				'maxitems' => 1,
-			),
-		),
-		'team' => array(
-			'exclude' => 0,
-			'label' => 'LLL:EXT:football_manager/Resources/Private/Language/locallang_db.xlf:tx_footballmanager_domain_model_match.team',
-			'config' => array(
-				'type' => 'select',
-				'foreign_table' => 'tx_footballmanager_domain_model_team',
-				'minitems' => 0,
-				'maxitems' => 1,
+				'size' => 30,
+				'eval' => 'trim,required'
 			),
 		),
 	),

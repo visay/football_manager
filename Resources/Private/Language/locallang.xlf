@@ -26,6 +26,9 @@
 			<trans-unit id="tx_footballmanager_domain_model_match.location">
 				<source>Location:</source>
 			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_match.team">
+				<source>Team:</source>
+			</trans-unit>
 
 			<trans-unit id="tx_footballmanager_domain_model_match.confirm">
 				<source>Confirmed: </source>
@@ -61,6 +64,13 @@
 			</trans-unit>
 			<trans-unit id="tx_footballmanager_domain_model_location.name">
 				<source>The name of the location</source>
+			</trans-unit>
+
+			<trans-unit id="tx_footballmanager_domain_model_team">
+				<source>The team to play with</source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_team.name">
+				<source>The name of the team</source>
 			</trans-unit>
 
 		</body>

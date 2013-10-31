@@ -26,6 +26,9 @@
 			<trans-unit id="tx_footballmanager_domain_model_match.location">
 				<source>Location</source>
 			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_match.team">
+				<source>Team</source>
+			</trans-unit>
 
 			<trans-unit id="tx_footballmanager_domain_model_playerresponse">
 				<source>Player Response</source>
@@ -44,6 +47,13 @@
 				<source>Location</source>
 			</trans-unit>
 			<trans-unit id="tx_footballmanager_domain_model_location.name">
+				<source>Name</source>
+			</trans-unit>
+
+			<trans-unit id="tx_footballmanager_domain_model_team">
+				<source>Team</source>
+			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_team.name">
 				<source>Name</source>
 			</trans-unit>
 

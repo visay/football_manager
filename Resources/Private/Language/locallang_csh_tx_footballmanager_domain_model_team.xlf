@@ -4,14 +4,8 @@
 		<header/>
 		<body>
 
-			<trans-unit id="date.description">
-				<source>The date of the match</source>
-			</trans-unit>
-			<trans-unit id="location.description">
-				<source>Location</source>
-			</trans-unit>
-			<trans-unit id="team.description">
-				<source>Team</source>
+			<trans-unit id="name.description">
+				<source>The name of the team</source>
 			</trans-unit>
 		</body>
 	</file>

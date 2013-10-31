@@ -49,6 +49,13 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $location;
 
 	/**
+	 * team
+	 *
+	 * @var \Visay\FootballManager\Domain\Model\Team
+	 */
+	protected $team;
+
+	/**
 	 * Returns the date
 	 *
 	 * @return \DateTime $date
@@ -84,6 +91,25 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setLocation(\Visay\FootballManager\Domain\Model\Location $location) {
 		$this->location = $location;
+	}
+
+	/**
+	 * Returns the team
+	 *
+	 * @return \Visay\FootballManager\Domain\Model\Team $team
+	 */
+	public function getTeam() {
+		return $this->team;
+	}
+
+	/**
+	 * Sets the team
+	 *
+	 * @param \Visay\FootballManager\Domain\Model\Team $team
+	 * @return void
+	 */
+	public function setTeam(\Visay\FootballManager\Domain\Model\Team $team) {
+		$this->team = $team;
 	}
 
 }
