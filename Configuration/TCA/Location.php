@@ -7,10 +7,10 @@ if (! defined ('TYPO3_MODE')) {
 $TCA['tx_footballmanager_domain_model_location'] = array(
 	'ctrl' => $TCA['tx_footballmanager_domain_model_location']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, map',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, map,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -104,6 +104,20 @@ $TCA['tx_footballmanager_domain_model_location'] = array(
 				'type' => 'input',
 				'size' => 30,
 				'eval' => 'trim,required'
+			),
+		),
+		'map' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:football_manager/Resources/Private/Language/locallang_db.xlf:tx_footballmanager_domain_model_location.map',
+			'config' => array(
+				'type' => 'group',
+				'internal_type' => 'file',
+				'uploadfolder' => 'uploads/tx_footballmanager',
+				'show_thumbs' => 1,
+				'size' => 1,
+				'maxitems' => 1,
+				'allowed' => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
+				'disallowed' => '',
 			),
 		),
 	),

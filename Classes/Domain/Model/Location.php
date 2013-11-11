@@ -42,6 +42,13 @@ class Location extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $name;
 
 	/**
+	 * The location's map
+	 *
+	 * @var \string
+	 */
+	protected $map;
+
+	/**
 	 * Returns the name
 	 *
 	 * @return \string $name
@@ -58,6 +65,25 @@ class Location extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setName($name) {
 		$this->name = $name;
+	}
+
+	/**
+	 * Returns the map
+	 *
+	 * @return \string $map
+	 */
+	public function getMap() {
+		return $this->map;
+	}
+
+	/**
+	 * Sets the map
+	 *
+	 * @param \string $map
+	 * @return void
+	 */
+	public function setMap($map) {
+		$this->map = $map;
 	}
 
 }

@@ -5,8 +5,14 @@
 <f:section name="main">
 	<f:if condition="{match}">
 		<f:then>
-			<h4><f:translate key="tx_footballmanager_domain_model_match.date" /> <f:format.date format="d.m.Y - H:i">{match.date}</f:format.date></h4>
-			<h4><f:translate key="tx_footballmanager_domain_model_match.location" /> {match.location.name}</h4>
+			<h4><f:translate key="tx_footballmanager_domain_model_match.date" /> <f:format.date format="l, j F Y - h:i A">{match.date}</f:format.date></h4>
+			<h4><f:translate key="tx_footballmanager_domain_model_match.location" />
+				{match.location.name}
+				<f:if condition="{match.location.map}">
+					<small>(<a href="<f:uri.image src='uploads/tx_footballmanager/{match.location.map}' />" target="_blank"><f:translate key="tx_footballmanager_domain_model_location.map" /></a>)</small>
+				</f:if>
+			</h4>
+			<h4><f:translate key="tx_footballmanager_domain_model_match.team" /> {match.team.name}</h4>
 			<table class="table">
 				<thead>
 					<tr>

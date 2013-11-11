@@ -7,6 +7,9 @@
 			<trans-unit id="name.description">
 				<source>The name of the location</source>
 			</trans-unit>
+			<trans-unit id="map.description">
+				<source>The location's map</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

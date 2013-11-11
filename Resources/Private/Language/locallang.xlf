@@ -65,6 +65,9 @@
 			<trans-unit id="tx_footballmanager_domain_model_location.name">
 				<source>The name of the location</source>
 			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_location.map">
+				<source>View Map</source>
+			</trans-unit>
 
 			<trans-unit id="tx_footballmanager_domain_model_team">
 				<source>The team to play with</source>
