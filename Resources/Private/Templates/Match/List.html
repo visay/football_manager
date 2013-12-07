@@ -5,7 +5,8 @@
 <f:section name="main">
 	<f:if condition="{match}">
 		<f:then>
-			<h4><f:translate key="tx_footballmanager_domain_model_match.date" /> <f:format.date format="l, j F Y - h:i A">{match.date}</f:format.date></h4>
+			<h4><f:translate key="tx_footballmanager_domain_model_match.date" /> <f:format.date format="l, j F Y">{match.date}</f:format.date></h4>
+			<h4><f:translate key="tx_footballmanager_domain_model_match.time" /> <f:format.date format="h:i A">{match.date}</f:format.date> - <f:format.date format="h:i A">{match.endtime}</f:format.date></h4>
 			<h4><f:translate key="tx_footballmanager_domain_model_match.location" />
 				{match.location.name}
 				<f:if condition="{match.location.map}">

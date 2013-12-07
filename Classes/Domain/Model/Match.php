@@ -42,6 +42,14 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $date;
 
 	/**
+	 * The end time of the match
+	 *
+	 * @var \DateTime
+	 * @validate NotEmpty
+	 */
+	protected $endtime;
+
+	/**
 	 * location
 	 *
 	 * @var \Visay\FootballManager\Domain\Model\Location
@@ -72,6 +80,25 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setDate($date) {
 		$this->date = $date;
+	}
+
+	/**
+	 * Returns the end time
+	 *
+	 * @return \DateTime $endtime
+	 */
+	public function getEndtime() {
+		return $this->endtime;
+	}
+
+	/**
+	 * Sets the end time
+	 *
+	 * @param \DateTime $endtime
+	 * @return void
+	 */
+	public function setEndtime($endtime) {
+		$this->endtime = $endtime;
 	}
 
 	/**

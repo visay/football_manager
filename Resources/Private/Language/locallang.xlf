@@ -23,6 +23,9 @@
 			<trans-unit id="tx_footballmanager_domain_model_match.date">
 				<source>Date:</source>
 			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_match.time">
+				<source>Time:</source>
+			</trans-unit>
 			<trans-unit id="tx_footballmanager_domain_model_match.location">
 				<source>Location:</source>
 			</trans-unit>
