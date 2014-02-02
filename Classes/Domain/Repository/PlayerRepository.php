@@ -26,12 +26,22 @@ namespace Visay\FootballManager\Domain\Repository;
  ***************************************************************/
 
 /**
- *
+ * Player repository
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
 class PlayerRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
+	/**
+	 * Returns all players ordered by sorting field
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface|array
+	 */
+	public function findAll() {
+		$query = $this->createQuery();
+		$query->setOrderings(array('sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
+		return $query->execute();
+	}
 }
 ?>
