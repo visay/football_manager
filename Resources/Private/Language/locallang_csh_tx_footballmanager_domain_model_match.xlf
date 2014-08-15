@@ -13,6 +13,9 @@
 			<trans-unit id="team.description">
 				<source>Team</source>
 			</trans-unit>
+			<trans-unit id="red_card_players.description">
+				<source>Red Card Players</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -32,6 +32,9 @@
 			<trans-unit id="tx_footballmanager_domain_model_match.team">
 				<source>Team:</source>
 			</trans-unit>
+			<trans-unit id="tx_footballmanager_domain_model_match.red_card_players">
+				<source>Red Card Players:</source>
+			</trans-unit>
 
 			<trans-unit id="tx_footballmanager_domain_model_match.confirm">
 				<source>Confirmed: </source>

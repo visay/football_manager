@@ -7,10 +7,10 @@ if (! defined ('TYPO3_MODE')) {
 $TCA['tx_footballmanager_domain_model_match'] = array(
 	'ctrl' => $TCA['tx_footballmanager_domain_model_match']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, date, location, team',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, date, location, team, red_card_players',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, date, location, team,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, date, location, team, red_card_players,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -126,6 +126,43 @@ $TCA['tx_footballmanager_domain_model_match'] = array(
 				'foreign_table' => 'tx_footballmanager_domain_model_team',
 				'minitems' => 0,
 				'maxitems' => 1,
+			),
+		),
+		'red_card_players' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:football_manager/Resources/Private/Language/locallang_db.xlf:tx_footballmanager_domain_model_match.red_card_players',
+			'config' => array(
+				'type' => 'select',
+				'foreign_table' => 'tx_footballmanager_domain_model_player',
+				'foreign_table_where' => ' AND (tx_footballmanager_domain_model_player.hidden = 0 AND tx_footballmanager_domain_model_player.deleted = 0) ORDER BY tx_footballmanager_domain_model_player.sorting',
+				'MM' => 'tx_footballmanager_match_player_mm',
+				'size' => 10,
+				'autoSizeMax' => 30,
+				'maxitems' => 9999,
+				'multiple' => 0,
+				'wizards' => array(
+					'_PADDING' => 1,
+					'_VERTICAL' => 1,
+					'edit' => array(
+						'type' => 'popup',
+						'title' => 'Edit',
+						'script' => 'wizard_edit.php',
+						'icon' => 'edit2.gif',
+						'popup_onlyOpenIfSelected' => 1,
+						'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+						),
+					'add' => Array(
+						'type' => 'script',
+						'title' => 'Create new',
+						'icon' => 'add.gif',
+						'params' => array(
+							'table' => 'tx_footballmanager_domain_model_player',
+							'pid' => '###CURRENT_PID###',
+							'setValue' => 'prepend'
+							),
+						'script' => 'wizard_add.php',
+					),
+				),
 			),
 		),
 	),

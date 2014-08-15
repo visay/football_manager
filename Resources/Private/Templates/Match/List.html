@@ -51,7 +51,10 @@
 									<td><f:image class="img-circle" width="50c" height="50c" src="EXT:football_manager/Resources/Public/Images/dummy.jpg" alt="{player.nickname}" /></td>
 								</f:else>
 							</f:if>
-							<td>{player.nickname}</td>
+							<td>
+								{player.nickname}
+								<fm:redCard match="{match}" player="{player}" />
+							</td>
 							<td><fm:iconType match="{match}" player="{player}" /></td>
 						</tr>
 					</f:for>

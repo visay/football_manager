@@ -50,6 +50,8 @@ $TCA['tx_footballmanager_domain_model_match'] = array(
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
 		'dividers2tabs' => TRUE,
+		'default_sortby' => 'ORDER BY crdate DESC',
+		'sortby' => 'ORDER BY crdate DESC',
 
 		'versioningWS' => 2,
 		'versioning_followPages' => TRUE,
@@ -65,7 +67,7 @@ $TCA['tx_footballmanager_domain_model_match'] = array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
-		'searchFields' => 'date,location,team',
+		'searchFields' => 'date,location,team,red_card_players',
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Match.php',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_footballmanager_domain_model_match.gif'
 	),
